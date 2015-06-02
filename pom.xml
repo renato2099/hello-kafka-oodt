@@ -28,9 +28,8 @@
         </dependency>
         <dependency>
             <groupId>org.apache.oodt</groupId>
-            <artifactId>oodt-core</artifactId>
+            <artifactId>cas-filemgr</artifactId>
             <version>0.8.1</version>
-
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -15,26 +15,57 @@ import static com.celgene.kafka.MetadataFactory.MetadataType.*;
  */
 public class SampleKafkaProducer {
 
+    /** Topic name */
     final static String TOPIC = "celgene-updates";
+    /** Kafka url */
     final static String KAFKA_URL = "localhost:9092";
+    /** Number of messages to be put */
+    final static int NUM_MSGS = 5;
+    /** Kafka producer */
+    private kafka.javaapi.producer.Producer<String,String> producer;
 
-    public static void main(String[] argv){
+
+    /** Constructor */
+    public SampleKafkaProducer() {
+        // TODO this should be passed as a properties file
         Properties properties = new Properties();
         properties.put("metadata.broker.list", KAFKA_URL);
         properties.put("serializer.class","kafka.serializer.StringEncoder");
-        Metadata2Json(MetadataFactory.buildMetadata(LIST));
-        Metadata2Json(MetadataFactory.buildMetadata(SIMPLE));
-        Metadata2Json(MetadataFactory.buildMetadata(HASHTABLE));
-        Metadata2Json(MetadataFactory.buildMetadata(COMPLEX));
-
-
-//        ProducerConfig producerConfig = new ProducerConfig(properties);
-//        kafka.javaapi.producer.Producer<String,String> producer = new kafka.javaapi.producer.Producer<String, String>(producerConfig);
-//        SimpleDateFormat sdf = new SimpleDateFormat();
-//        KeyedMessage<String, String> message =new KeyedMessage<String, String>(TOPIC,"Test message from java program " + sdf.format(new Date()));
-//        producer.send(message);
-//        producer.close();
+        ProducerConfig producerConfig = new ProducerConfig(properties);
+        // TODO this is not going to give us the best performance, change serializer
+        this.producer = new kafka.javaapi.producer.Producer<String, String>(producerConfig);
     }
+
+    /** Sends messages into Kafka */
+    public void sendKafka(KeyedMessage<String, String> message) {
+        this.producer.send(message);
+    }
+
+    /** Closes kafka producer */
+    public void closeProducer() {
+        this.producer.close();
+    }
+
+    public static void main(String[] argv){
+        String system1 = "s1";
+        String system2 = "s2";
+        String system3 = "s3";
+
+        SampleKafkaProducer kafkaProducer = new SampleKafkaProducer();
+
+        sendSystemMetadata(system1, kafkaProducer);
+        sendSystemMetadata(system2, kafkaProducer);
+        sendSystemMetadata(system3, kafkaProducer);
+
+        kafkaProducer.closeProducer();
+    }
+
+    private static void sendSystemMetadata(String system, SampleKafkaProducer kafkaProducer) {
+        for (int cnt = 0; cnt < NUM_MSGS; cnt++) {
+            kafkaProducer.sendKafka(new KeyedMessage<String, String>(TOPIC, String.format("[%s] %s", system, Metadata2Json(MetadataFactory.buildMetadata(cnt%4 + cnt/4)))));
+        }
+    }
+
     public static String Metadata2Json(Metadata md) {
         JSONObject jsonObj = new JSONObject();
 

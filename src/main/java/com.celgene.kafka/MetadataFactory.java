@@ -26,6 +26,27 @@ public class MetadataFactory {
         }
     }
 
+    public static Metadata buildMetadata(int type) {
+        Metadata md = null;
+        switch(type) {
+            case 0:
+                md = createHashTableMd();
+                break;
+            case 1:
+                md = createListMd();
+                break;
+            case 2:
+                md = createSimpleMd();
+                break;
+            case 3:
+                md = createComplexMd();
+                break;
+            default:
+                throw new IllegalArgumentException("Metadata type not supported!");
+        }
+        return md;
+    }
+
     public static Metadata buildMetadata(MetadataType type) {
         Metadata md = null;
         switch(type) {
@@ -40,6 +61,9 @@ public class MetadataFactory {
                 break;
             case COMPLEX:
                 md = createComplexMd();
+                break;
+            default:
+                throw new IllegalArgumentException("Metadata type not supported!");
         }
         return md;
     }
