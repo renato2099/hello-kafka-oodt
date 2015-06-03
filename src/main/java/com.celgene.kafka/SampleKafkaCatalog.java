@@ -19,6 +19,7 @@ public class SampleKafkaCatalog extends SpacerCatalog{
     /** Default Constructor */
     public SampleKafkaCatalog(Catalog catalog) {
         super(catalog);
+        this.kafkaProducer = new SampleKafkaProducer();
     }
 
     /** Constructor */
@@ -30,7 +31,7 @@ public class SampleKafkaCatalog extends SpacerCatalog{
     @Override
     public synchronized void addMetadata(Metadata m, Product product)
             throws CatalogException {
-        this.catalog.addMetadata(m,product);
+        super.addMetadata(m,product);
         this.kafkaProducer.sendKafka(new KeyedMessage<String, String>(SampleKafkaProducer.TOPIC, String.format("[%s] %s", "", SampleKafkaProducer.Metadata2Json(m))));
     }
 

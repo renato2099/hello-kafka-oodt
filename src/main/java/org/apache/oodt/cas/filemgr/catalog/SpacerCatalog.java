@@ -115,7 +115,7 @@ public abstract class SpacerCatalog implements Catalog {
      */
     public synchronized void setProductTransferStatus(Product product)
             throws CatalogException {
-        this.setProductTransferStatus(product);
+        this.catalog.setProductTransferStatus(product);
     }
 
     /*
@@ -219,7 +219,7 @@ public abstract class SpacerCatalog implements Catalog {
      */
     public List<Product> getTopNProducts(int n, ProductType type)
             throws CatalogException {
-        return this.getTopNProducts(n,type);
+        return this.catalog.getTopNProducts(n,type);
     }
 
     /*
