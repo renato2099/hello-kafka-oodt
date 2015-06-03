@@ -56,7 +56,7 @@ public abstract class SpacerCatalogFactory implements CatalogFactory {
     }
 
     /**
-     * Wrapper to create 
+     * Wrapper to create
      * @param sub
      * @return
      */
