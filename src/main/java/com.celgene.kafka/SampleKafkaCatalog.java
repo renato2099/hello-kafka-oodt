@@ -33,4 +33,5 @@ public class SampleKafkaCatalog extends SpacerCatalog{
         this.catalog.addMetadata(m,product);
         this.kafkaProducer.sendKafka(new KeyedMessage<String, String>(SampleKafkaProducer.TOPIC, String.format("[%s] %s", "", SampleKafkaProducer.Metadata2Json(m))));
     }
+
 }

@@ -18,39 +18,18 @@
 package org.apache.oodt.cas.filemgr.catalog;
 
 //OODT imports
-import org.apache.oodt.cas.filemgr.structs.BooleanQueryCriteria;
-import org.apache.oodt.cas.filemgr.structs.Element;
 import org.apache.oodt.cas.filemgr.structs.Product;
 import org.apache.oodt.cas.filemgr.structs.ProductPage;
 import org.apache.oodt.cas.filemgr.structs.ProductType;
 import org.apache.oodt.cas.filemgr.structs.Query;
-import org.apache.oodt.cas.filemgr.structs.QueryCriteria;
-import org.apache.oodt.cas.filemgr.structs.RangeQueryCriteria;
 import org.apache.oodt.cas.filemgr.structs.Reference;
-import org.apache.oodt.cas.filemgr.structs.TermQueryCriteria;
 import org.apache.oodt.cas.filemgr.structs.exceptions.CatalogException;
-import org.apache.oodt.cas.filemgr.structs.exceptions.ValidationLayerException;
-import org.apache.oodt.cas.filemgr.util.DbStructFactory;
 import org.apache.oodt.cas.filemgr.validation.ValidationLayer;
 import org.apache.oodt.cas.metadata.Metadata;
-import org.apache.oodt.commons.pagination.PaginationUtils;
-import org.apache.oodt.commons.util.DateConvert;
-
-//SPRING imports
-import org.springframework.util.StringUtils;
-
-
 
 //JDK imports
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.TreeMap;
-import java.util.UUID;
-import java.util.Vector;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 /**
  * @author starchmd
@@ -61,7 +40,7 @@ import java.util.logging.Logger;
  * </p>
  *
  */
-public class SpacerCatalog implements Catalog {
+public abstract class SpacerCatalog implements Catalog {
     /* our log stream */
     private static final Logger LOG = Logger.getLogger(DataSourceCatalog.class.getName());
 
