@@ -32,7 +32,7 @@ public class SampleKafkaCatalog extends SpacerCatalog{
     public synchronized void addMetadata(Metadata m, Product product)
             throws CatalogException {
         super.addMetadata(m,product);
-        this.kafkaProducer.sendKafka(new KeyedMessage<String, String>(SampleKafkaProducer.TOPIC, String.format("[%s] %s", "", SampleKafkaProducer.Metadata2Json(m))));
+        this.kafkaProducer.sendKafka(new KeyedMessage<String, String>(SampleKafkaProducer.TOPIC, String.format("%s", SampleKafkaProducer.Metadata2Json(m))));
     }
 
 }

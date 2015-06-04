@@ -20,6 +20,10 @@ public class SampleKafkaProducer {
     public static String SERIALIZER = "kafka.serializer.StringEncoder";
     /** Number of messages to be put */
     public final static int NUM_MSGS = 5;
+    /** Tag to be used for specifying data source */
+    public final static String SOURCE_TAG = "DataSource";
+    /** Tag for specifying things coming out of OODT  */
+    public final static String SOURCE_VAL = "OODT";
     /** Kafka producer */
     private kafka.javaapi.producer.Producer<String,String> producer;
 
@@ -110,7 +114,7 @@ public class SampleKafkaProducer {
                 jsonObj.put(group, md.getAllMetadata(group));
             }
         }
-
+        jsonObj.put(SOURCE_TAG, SOURCE_VAL);
         return jsonObj.toString();
     }
 }
