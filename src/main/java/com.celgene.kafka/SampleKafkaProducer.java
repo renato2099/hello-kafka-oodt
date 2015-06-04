@@ -16,9 +16,11 @@ import static com.celgene.kafka.MetadataFactory.MetadataType.*;
 public class SampleKafkaProducer {
 
     /** Topic name */
-    public final static String TOPIC = "celgene-updates";
+    public static String TOPIC = "celgene-updates";
     /** Kafka url */
-    public final static String KAFKA_URL = "localhost:9092";
+    public static String KAFKA_URL = "localhost:9092";
+    /** Kafka serializer class */
+    public static String SERIALIZER = "kafka.serializer.StringEncoder";
     /** Number of messages to be put */
     public final static int NUM_MSGS = 5;
     /** Kafka producer */
@@ -27,10 +29,9 @@ public class SampleKafkaProducer {
 
     /** Constructor */
     public SampleKafkaProducer() {
-        // TODO this should be passed as a properties file
         Properties properties = new Properties();
         properties.put("metadata.broker.list", KAFKA_URL);
-        properties.put("serializer.class","kafka.serializer.StringEncoder");
+        properties.put("serializer.class", SERIALIZER);
         ProducerConfig producerConfig = new ProducerConfig(properties);
         // TODO this is not going to give us the best performance, change serializer
         this.producer = new kafka.javaapi.producer.Producer<String, String>(producerConfig);
@@ -38,6 +39,7 @@ public class SampleKafkaProducer {
 
     public SampleKafkaProducer(Properties properties) {
         ProducerConfig producerConfig = new ProducerConfig(properties);
+        TOPIC = properties.getProperty("topic-name");
         // TODO this is not going to give us the best performance, change serializer
         this.producer = new kafka.javaapi.producer.Producer<String, String>(producerConfig);
     }
