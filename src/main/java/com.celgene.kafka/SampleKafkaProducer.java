@@ -1,14 +1,11 @@
 package com.celgene.kafka;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 import org.apache.oodt.cas.metadata.*;
 import org.json.simple.JSONObject;
-
-import static com.celgene.kafka.MetadataFactory.MetadataType.*;
 
 /**
  * Sample Kafka producer

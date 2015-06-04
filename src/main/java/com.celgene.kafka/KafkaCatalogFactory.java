@@ -1,6 +1,5 @@
 package com.celgene.kafka;
 
-import kafka.producer.ProducerConfig;
 import org.apache.oodt.cas.filemgr.catalog.Catalog;
 import org.apache.oodt.cas.filemgr.catalog.SpacerCatalogFactory;
 
