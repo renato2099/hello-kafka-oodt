@@ -1,4 +1,7 @@
-package com.celgene.kafka;
+/*
+ * Copyright Celgene Coorporation 2015
+ */
+package com.celgene.red.oodt.cas.kafka;
 
 import java.util.*;
 
@@ -17,7 +20,7 @@ public class SampleKafkaProducer {
     /** Kafka url */
     public static String KAFKA_URL = "localhost:9092";
     /** Kafka serializer class */
-    public static String SERIALIZER = "kafka.serializer.StringEncoder";
+    public static String SERIALIZER = "com.celgene.red.oodt.cas.kafka.serializer.StringEncoder";
     /** Number of messages to be put */
     public final static int NUM_MSGS = 5;
     /** Tag to be used for specifying data source */
@@ -50,7 +53,7 @@ public class SampleKafkaProducer {
         this.producer.send(message);
     }
 
-    /** Closes kafka producer */
+    /** Closes com.celgene.red.oodt.cas.kafka producer */
     public void closeProducer() {
         this.producer.close();
     }

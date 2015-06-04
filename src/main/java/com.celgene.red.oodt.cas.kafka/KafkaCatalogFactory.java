@@ -1,10 +1,16 @@
-package com.celgene.kafka;
+/*
+ * Copyright Celgene Coorporation 2015
+ */
+package com.celgene.red.oodt.cas.kafka;
 
 import org.apache.oodt.cas.filemgr.catalog.Catalog;
 import org.apache.oodt.cas.filemgr.catalog.SpacerCatalogFactory;
 
 import java.util.Properties;
 
+/**
+ * Factory to create a KafkaCatalog
+ */
 public class KafkaCatalogFactory extends SpacerCatalogFactory {
 
     @Override

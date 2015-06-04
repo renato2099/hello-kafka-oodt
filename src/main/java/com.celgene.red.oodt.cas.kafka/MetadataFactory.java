@@ -1,4 +1,7 @@
-package com.celgene.kafka;
+/*
+ * Copyright Celgene Coorporation 2015
+ */
+package com.celgene.red.oodt.cas.kafka;
 
 import org.apache.oodt.cas.metadata.Metadata;
 
