@@ -1,7 +1,4 @@
-/*
- * Copyright Celgene Coorporation 2015
- */
-package com.celgene.red.oodt.cas.kafka;
+package org.apache.oodt.cas.kafka;
 
 import kafka.consumer.Consumer;
 import kafka.consumer.ConsumerConfig;
@@ -23,7 +20,6 @@ import java.util.Properties;
  */
 public class SampleKafkaConsumer extends  Thread {
     final static String clientId = "SimpleConsumerDemoClient";
-//    final static String TOPIC = "pythontest";
     ConsumerConnector consumerConnector;
 
 
